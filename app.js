@@ -1,4 +1,3 @@
-
 const {inputForm} = require('./view')
 const {printTable} = require('console-table-printer')
 

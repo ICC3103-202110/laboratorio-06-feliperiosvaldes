@@ -1,10 +1,9 @@
 initModel = {
-    BillAmount: 0,
-    percentage: 0,
-    tipValue: 0,
-    total: 0
+    leftValue: 0,
+    leftUnit: 'Celsius',
+    rightValue: 32,
+    rightUnit: 'Fahrenheit'
 }
-
 module.exports = {
     initModel
 }

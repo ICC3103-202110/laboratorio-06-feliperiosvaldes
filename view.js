@@ -13,31 +13,30 @@ function getTitle(){
         )
     )
 }
-
 function getTable(model){
-    const {leftT, tempV, From1} = model
+    const {leftValue, leftUnit, rightValue, rightUnit} = model
+    const {value} = model
     return [
         {
-        'Left Value': leftT,
-        'Left Unit': From1,
-        'Right Value': leftT,
-        'Right Unit': tempV
+        'Left Value': leftValue,
+        'Left Unit': leftUnit,
+        'Right Value': rightValue,
+        'Right Unit': rightUnit
       }
     ]
 }
 function inputForm(model){
-    const {leftT} = model
-    const {tempV} = model
-    const {From1} = model
+    const {leftValue, leftT} = model
     const leftTemp = 'Left temperature is source?'
     const tempValue = 'Temperature value to convert?'
     const From = 'From?'
+    const To = 'To?'
     const choices = ['Celsius', 'Fahrenheit', 'Kelvin']
 
     return inquirer.prompt([
         {
             name: 'leftT',
-            type: 'input',
+            type: 'confirm',
             message: leftTemp,
             default: leftT,
         },
@@ -45,7 +44,7 @@ function inputForm(model){
             name: 'tempV',
             type: 'number',
             message: tempValue,
-            default: tempV,
+            default: leftValue,
         },
         {
             name: 'From1',
@@ -53,21 +52,25 @@ function inputForm(model){
             message: From,
             default: From,
             choices: choices
+        },
+        {
+            name: 'To1',
+            type: 'list',
+            message: To,
+            default: To,
+            choices: choices
 
         }
     ])
 }
 
-// Get actual console view
 function view(model){
     return {
         title: getTitle(),
         table: getTable(model)
     }
 }
-
 module.exports = {
     view, 
-    inputForm
-  
+    inputForm 
 }
